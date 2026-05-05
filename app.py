@@ -1,6 +1,3 @@
-project_dir = '/content/ChestXRayAI'
-
-app_code = '''
 import streamlit as st
 import numpy as np
 import cv2
@@ -52,7 +49,6 @@ def overlay_heatmap(img_array, heatmap, alpha=0.4):
     h = cv2.cvtColor(h, cv2.COLOR_BGR2RGB)
     return (alpha * h + (1-alpha) * img_array).astype(np.uint8)
 
-# ── Header ───────────────────────────────
 st.title("🫁 Chest X-Ray AI Diagnostic System")
 st.markdown("**DenseNet121 Transfer Learning** + **Grad-CAM Explainability** | NIH ChestX-ray14")
 st.markdown("---")
@@ -86,8 +82,8 @@ if uploaded and analyze:
     with st.spinner("🧠 Analyzing..."):
         preds = model.predict(img_input, verbose=0)[0]
         top_idx = int(np.argmax(preds))
-        heatmap  = generate_gradcam(model, img_input, top_idx)
-        overlay  = overlay_heatmap(img_array, heatmap)
+        heatmap = generate_gradcam(model, img_input, top_idx)
+        overlay = overlay_heatmap(img_array, heatmap)
 
     with col2:
         st.subheader("🔬 Results")
@@ -114,9 +110,3 @@ if uploaded and analyze:
         with c2:
             st.image(overlay, caption="AI Attention", use_column_width=True)
         st.caption("🔴 Red = high attention | 🔵 Blue = low attention")
-'''
-
-with open(f'{project_dir}/app.py', 'w') as f:
-    f.write(app_code)
-
-print("✅ Fixed app.py saved!")
