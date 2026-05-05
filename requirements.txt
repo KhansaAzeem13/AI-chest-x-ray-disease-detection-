@@ -1,0 +1,7 @@
+requirements = """tensorflow
+tf-keras
+streamlit
+opencv-python-headless
+matplotlib
+numpy
+Pillow
