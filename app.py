@@ -3,8 +3,6 @@ import numpy as np
 import cv2
 from PIL import Image
 import matplotlib.pyplot as plt
-import tensorflow as tf
-import tf_keras as keras
 
 st.set_page_config(
     page_title="Chest X-Ray AI",
@@ -21,9 +19,13 @@ LABELS = [
 
 @st.cache_resource
 def load_model():
+    import tensorflow as tf
+    import tf_keras as keras
     return keras.models.load_model("model/best_model.keras")
 
 def generate_gradcam(model, img_array, class_idx):
+    import tensorflow as tf
+    import tf_keras as keras
     last_conv = None
     for layer in reversed(model.layers):
         if len(layer.output_shape) == 4:
@@ -49,6 +51,7 @@ def overlay_heatmap(img_array, heatmap, alpha=0.4):
     h = cv2.cvtColor(h, cv2.COLOR_BGR2RGB)
     return (alpha * h + (1-alpha) * img_array).astype(np.uint8)
 
+# ── UI ───────────────────────────────────────────────────
 st.title("🫁 Chest X-Ray AI Diagnostic System")
 st.markdown("**DenseNet121 Transfer Learning** + **Grad-CAM Explainability** | NIH ChestX-ray14")
 st.markdown("---")
@@ -82,8 +85,8 @@ if uploaded and analyze:
     with st.spinner("🧠 Analyzing..."):
         preds = model.predict(img_input, verbose=0)[0]
         top_idx = int(np.argmax(preds))
-        heatmap = generate_gradcam(model, img_input, top_idx)
-        overlay = overlay_heatmap(img_array, heatmap)
+        heatmap  = generate_gradcam(model, img_input, top_idx)
+        overlay  = overlay_heatmap(img_array, heatmap)
 
     with col2:
         st.subheader("🔬 Results")
