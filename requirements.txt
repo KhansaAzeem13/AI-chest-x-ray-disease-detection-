@@ -3,5 +3,5 @@ opencv-python-headless
 matplotlib
 numpy
 Pillow
+tensorflow==2.19.0
 tf-keras
-tensorflow-cpu
