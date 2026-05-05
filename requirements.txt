@@ -1,4 +1,4 @@
-requirements = """tensorflow
+tensorflow==2.19.0
 tf-keras
 streamlit
 opencv-python-headless
