@@ -5,3 +5,4 @@ numpy
 Pillow
 tensorflow==2.19.0
 tf-keras
+gdown
