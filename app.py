@@ -89,7 +89,8 @@ with st.sidebar:
     p_name = st.text_input("Full Name", "Ahmed Khan")
     p_age = st.number_input("Age", 1, 100, 35)
     st.divider()
-    threshold = st.slider("Sensitivity Threshold", 0.1, 0.9, 0.5)
+    # Yahan threshold ko 0.2 kar diya gaya hai
+    threshold = st.slider("Sensitivity Threshold", 0.1, 0.9, 0.2)
 
 # --- Main App ---
 st.title("🏥 AI Radiology Analysis")
