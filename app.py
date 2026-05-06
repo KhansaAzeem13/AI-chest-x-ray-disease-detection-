@@ -66,15 +66,29 @@ st.markdown("""
 
 /* ── Base Reset ── */
 html, body, [class*="css"] {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text);
+    font-family: 'DM Sans', sans-serif !important;
+    color: #e8edf5 !important;
 }
 .stApp {
-    background: var(--navy);
+    background: #0a1628 !important;
     background-image:
         radial-gradient(ellipse at 15% 10%, rgba(0,119,182,0.15) 0%, transparent 55%),
         radial-gradient(ellipse at 85% 80%, rgba(0,180,216,0.08) 0%, transparent 55%);
 }
+/* Force ALL streamlit text to be light */
+.stApp p, .stApp span, .stApp label, .stApp div,
+.stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5,
+.stMarkdown, .stMarkdown p, .stMarkdown span,
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] span,
+[data-testid="stMarkdownContainer"],
+.stText, .stCaption { color: #e8edf5 !important; }
+/* Streamlit native widget labels */
+.stTextInput label, .stNumberInput label, .stSelectbox label,
+.stSlider label, .stTextArea label, .stFileUploader label,
+.stRadio label { color: #c8d4e3 !important; font-size: 0.85rem !important; font-weight: 500 !important; }
+/* Caption text */
+.stCaption, [data-testid="stCaptionContainer"] { color: #8899aa !important; }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }
@@ -83,18 +97,29 @@ html, body, [class*="css"] {
 
 /* ── Sidebar ── */
 section[data-testid="stSidebar"] {
-    background: var(--navy2) !important;
-    border-right: 1px solid var(--border);
+    background: #112240 !important;
+    border-right: 1px solid rgba(0,180,216,0.18);
 }
-section[data-testid="stSidebar"] * { color: var(--text) !important; }
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] div,
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 { color: #e8edf5 !important; }
 section[data-testid="stSidebar"] input,
 section[data-testid="stSidebar"] select {
-    background: var(--navy) !important;
-    border: 1px solid var(--border) !important;
+    background: #0a1628 !important;
+    border: 1px solid rgba(0,180,216,0.25) !important;
     border-radius: 8px !important;
-    color: var(--text) !important;
+    color: #e8edf5 !important;
 }
-section[data-testid="stSidebar"] .stSelectbox > div { background: var(--navy) !important; }
+section[data-testid="stSidebar"] .stSelectbox > div { background: #0a1628 !important; }
+section[data-testid="stSidebar"] .stTextInput label,
+section[data-testid="stSidebar"] .stNumberInput label,
+section[data-testid="stSidebar"] .stSelectbox label,
+section[data-testid="stSidebar"] .stSlider label,
+section[data-testid="stSidebar"] .stTextArea label { color: #aabbcc !important; }
 
 /* ── Inputs & Widgets ── */
 .stTextInput input, .stNumberInput input, .stTextArea textarea {
